@@ -1,41 +1,45 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competidores inscritos</title>
-    <link rel="stylesheet" href="{% static 'competidores/estilos.css' %}">
-</head>
-<body>
-    <main>
-        <h1>Competidores inscritos</h1>
+{% extends "competidores/base.html" %}
 
-        {% if competidores %}
+{% block title %}Competidores | Senasoft{% endblock %}
+
+{% block content %}
+<section class="encabezado-pagina">
+    <p class="etiqueta">Participantes</p>
+    <h1>Competidores inscritos</h1>
+    <p>Consulta las personas registradas para el encuentro.</p>
+</section>
+
+<section class="tarjeta tabla-tarjeta">
+    {% if competidores %}
+        <div class="tabla-contenedor">
             <table>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Centro</th>
+                        <th>Competidor</th>
+                        <th>Centro de formación</th>
                         <th>Categoría</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for competidor in competidores %}
                         <tr>
-                            <td>{{ competidor.nombre }}</td>
+                            <td class="nombre-tabla">{{ competidor.nombre }}</td>
                             <td>{{ competidor.centro }}</td>
-                            <td>{{ competidor.categoria }}</td>
+                            <td><span class="insignia">{{ competidor.categoria }}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        {% else %}
-            <p>Aún no hay competidores inscritos.</p>
-        {% endif %}
-
-        <p><a href="{% url 'registro' %}">Registrar otro competidor</a></p>
-        <p><a href="{% url 'inicio' %}">Volver al inicio</a></p>
-    </main>
-</body>
-</html>
+        </div>
+    {% else %}
+        <div class="estado-vacio">
+            <span class="estado-icono">S</span>
+            <h2>Aún no hay competidores</h2>
+            <p>Cuando se registre el primero, aparecerá en esta lista.</p>
+            <a class="boton boton-principal" href="{% url 'registro' %}">
+                Registrar competidor
+            </a>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

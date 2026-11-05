@@ -1,32 +1,57 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de competidor</title>
-    <link rel="stylesheet" href="{% static 'competidores/estilos.css' %}">
-</head>
-<body>
-    <main>
-        <h1>Registrar competidor</h1>
+{% extends "competidores/base.html" %}
 
-        <form method="POST">
-            {% csrf_token %}
+{% block title %}Inscripción | Senasoft{% endblock %}
 
-            <label for="nombre">Nombre del competidor:</label>
-            <input type="text" id="nombre" name="nombre" required>
+{% block content %}
+<section class="encabezado-pagina">
+    <p class="etiqueta">Participantes</p>
+    <h1>Inscribir competidor</h1>
+    <p>Completa los datos para registrar la participación en Senasoft.</p>
+</section>
 
-            <label for="centro">Nombre del centro:</label>
-            <input type="text" id="centro" name="centro" required>
+<section class="tarjeta formulario-tarjeta">
+    <form method="POST" class="formulario">
+        {% csrf_token %}
 
-            <label for="categoria">Nombre de la categoría:</label>
-            <input type="text" id="categoria" name="categoria" required>
+        <div class="campo">
+            <label for="nombre">Nombre del competidor</label>
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Ej. María Pérez"
+                maxlength="120"
+                required
+            >
+        </div>
 
-            <button type="submit">Guardar inscripción</button>
-        </form>
+        <div class="campo">
+            <label for="centro">Centro de formación</label>
+            <input
+                type="text"
+                id="centro"
+                name="centro"
+                placeholder="Ej. Centro de Gestión de Mercados"
+                maxlength="160"
+                required
+            >
+        </div>
 
-        <p><a href="{% url 'inicio' %}">Volver al inicio</a></p>
-    </main>
-</body>
-</html>
+        <div class="campo">
+            <label for="categoria">Categoría</label>
+            <input
+                type="text"
+                id="categoria"
+                name="categoria"
+                placeholder="Ej. Desarrollo de software"
+                maxlength="120"
+                required
+            >
+        </div>
+
+        <button class="boton boton-principal" type="submit">
+            Guardar inscripción
+        </button>
+    </form>
+</section>
+{% endblock %}

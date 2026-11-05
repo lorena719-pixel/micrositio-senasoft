@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Senasoft{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'competidores/estilos.css' %}">
+</head>
+<body>
+    <header class="barra">
+        <a class="marca" href="{% url 'inicio' %}">
+            <span class="marca-icono">S</span>
+            <span>Senasoft<span class="marca-punto">.</span></span>
+        </a>
+
+        <nav class="navegacion" aria-label="Navegación principal">
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'registro' %}">Inscripción</a>
+            <a href="{% url 'lista_competidores' %}">Competidores</a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="pie">
+        <p>© Senasoft · Talento, tecnología e innovación</p>
+    </footer>
+</body>
+</html>

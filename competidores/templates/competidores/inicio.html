@@ -1,19 +1,40 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos a Senasoft</title>
-    <link rel="stylesheet" href="{% static 'competidores/estilos.css' %}">
-</head>
-<body>
-    <main>
-        <h1>¡Bienvenidos a Senasoft!</h1>
-        <p>Un espacio para compartir conocimientos y celebrar el talento.</p>
+{% extends "competidores/base.html" %}
 
-        <p><a href="{% url 'registro' %}">Registrar competidor</a></p>
-        <p><a href="{% url 'lista_competidores' %}">Ver competidores inscritos</a></p>
-    </main>
-</body>
-</html>
+{% block title %}Inicio | Senasoft{% endblock %}
+
+{% block content %}
+<section class="portada">
+    <div class="portada-texto">
+        <p class="etiqueta">Encuentro de tecnología e innovación</p>
+        <h1>El talento que transforma el futuro.</h1>
+        <p class="descripcion">
+            Bienvenidos a Senasoft, un espacio para compartir conocimientos,
+            crear soluciones y celebrar el talento de nuestros aprendices.
+        </p>
+
+        <div class="acciones">
+            <a class="boton boton-principal" href="{% url 'registro' %}">
+                Inscribir competidor
+            </a>
+            <a class="boton boton-secundario" href="{% url 'lista_competidores' %}">
+                Ver competidores
+            </a>
+        </div>
+    </div>
+
+    <div class="portada-tarjeta">
+        <span class="portada-simbolo">S</span>
+        <p class="portada-frase">Ideas que inspiran.<br>Talento que construye.</p>
+        <span class="portada-detalle">SENASOFT</span>
+    </div>
+</section>
+
+<section class="bloque-informativo">
+    <p class="etiqueta">Participa</p>
+    <h2>Un espacio para demostrar lo que sabes hacer</h2>
+    <p>
+        Registra al competidor con su centro de formación y categoría.
+        Las inscripciones aparecerán en la lista de participantes.
+    </p>
+</section>
+{% endblock %}
