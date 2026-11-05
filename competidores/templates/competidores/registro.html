@@ -1,30 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de competidor</title>
+    <link rel="stylesheet" href="{% static 'competidores/estilos.css' %}">
 </head>
 <body>
-    <h1>Registrar competidor</h1>
+    <main>
+        <h1>Registrar competidor</h1>
 
-    <form method="POST">
-        {% csrf_token %}
+        <form method="POST">
+            {% csrf_token %}
 
-        <label for="nombre">Nombre del competidor:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <br><br>
+            <label for="nombre">Nombre del competidor:</label>
+            <input type="text" id="nombre" name="nombre" required>
 
-        <label for="centro">Nombre del centro:</label>
-        <input type="text" id="centro" name="centro" required>
-        <br><br>
+            <label for="centro">Nombre del centro:</label>
+            <input type="text" id="centro" name="centro" required>
 
-        <label for="categoria">Nombre de la categoría:</label>
-        <input type="text" id="categoria" name="categoria" required>
-        <br><br>
+            <label for="categoria">Nombre de la categoría:</label>
+            <input type="text" id="categoria" name="categoria" required>
 
-        <button type="submit">Guardar inscripción</button>
-    </form>
+            <button type="submit">Guardar inscripción</button>
+        </form>
 
-    <p><a href="{% url 'inicio' %}">Volver al inicio</a></p>
+        <p><a href="{% url 'inicio' %}">Volver al inicio</a></p>
+    </main>
 </body>
 </html>
