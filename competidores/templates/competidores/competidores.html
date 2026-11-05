@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Competidores inscritos</title>
+</head>
+<body>
+    <h1>Competidores inscritos</h1>
+
+    {% if competidores %}
+        <table border="1" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Centro</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for competidor in competidores %}
+                    <tr>
+                        <td>{{ competidor.nombre }}</td>
+                        <td>{{ competidor.centro }}</td>
+                        <td>{{ competidor.categoria }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aún no hay competidores inscritos.</p>
+    {% endif %}
+
+    <p><a href="{% url 'registro' %}">Registrar otro competidor</a></p>
+    <p><a href="{% url 'inicio' %}">Volver al inicio</a></p>
+</body>
+</html>
